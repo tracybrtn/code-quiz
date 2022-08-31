@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Coding Quiz</title>
 </head>
+
 <body>
     <main class="main-content">
         <!--landing page-->
@@ -43,15 +44,14 @@
             </header>
             <!--quiz body-->
             <section id="game-main">
-                <div class="game-question">
-                    <h3>what is a question?</h3>
-                </div>
+                <div id="question"></div>
                 <div class="options-container">
+                    <!-- for future optimization append li into ul list -->
                     <ul class="option-list">
-                        <li><button class="option"></button></li>
-                        <li><button class="option"></button></li>
-                        <li><button class="option"></button></li>
-                        <li><button class="option"></button></li>
+                        <li><button class="option option-glow" id="option-1"></button></li>
+                        <li><button class="option option-glow" id="option-2"></button></li>
+                        <li><button class="option option-glow" id="option-3"></button></li>
+                        <li><button class="option option-glow" id="option-4"></button></li>
                     </ul>
                 </div>
             </section>
