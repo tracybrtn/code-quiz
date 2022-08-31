@@ -9,23 +9,57 @@
 </head>
 <body>
     <main class="main-content">
-        <div class="container box-glow">
-            <div id="landing-page" class="container-flex">
-                <div>
-                    <h1> Coding Quiz!</h1>
-                </div>
-                <div>
-                    <p>Test your <span>coding knowledge</span> with this quiz! <br> 
-                        You will have <span>75 seconds</span> to answer <span>8 questions.</span>
-                        Good luck!</p>
-                </div>
-                <div class="btns">
-                    <a class="btn-box btn-glow" href="/game.html">Start</a> <!--button needs to be updated to link to JS-->
-                    <a class="btn-box btn-glow" href="/highscores.html">High Scores</a>
-                </div>
+        <!--landing page-->
+        <section id="landing-page" class="container flex-box box-glow">
+            <header>
+                <h1> Coding Quiz!</h1>
+            </header>
+            <div>
+                <p>Test your <span>coding knowledge</span> with this quiz! <br> 
+                    You will have <span>75 seconds</span> to answer <span>8 questions.</span>
+                    Good luck!</p>
             </div>
-        </div>
+            <div class="btns">
+                <a class="btn-box btn-glow" href="/game.html">Start</a> <!--button needs to be updated to link to JS-->
+                <a class="btn-box btn-glow" href="/highscores.html">High Scores</a>
+            </div>
+        </section>
+        
+        <!--quiz page-->
+        <section id="quiz-page" class="container flex-box box-glow">
+            <!--quiz header-->
+            <header class="quiz-header">
+                <div>
+                    <h2> Coding Quiz!</h2>
+                </div>
+                <div class="quiz-timer">
+                    <div>
+                        <h2>Time Left</h2>
+                    </div>
+                    <div>
+                        <h2>75</h2>
+                    </div>
+                </div>
+            </header>
+            <!--quiz body-->
+            <section class="game-main">
+                <div class="game-question">
+                    <h3>what is a question?</h3>
+                </div>
+                <div class="options-container">
+                    <ul class="option-list">
+                        <li class="option"></li>
+                        <li class="option"></li>
+                        <li class="option"></li>
+                        <li class="option"></li>
+                    </ul>
+                </div>
+            </section>
+            <!--end of quiz body-->
+        </section>
+        <!--end of quiz page-->
     </main>
+    
     <footer>
         <p> Copyright <span>@tracybrtn 2022</span></p>
     </footer>

@@ -65,7 +65,7 @@ span {
     text-shadow: calc(.1em + .1vw) calc(.1em + .1vw) var(--quaternary-color);
 }
 
-.container-flex {
+.flex-box {
     display: flex;
     flex-direction: column;
     row-gap: calc(1em + 1vw);
@@ -99,6 +99,17 @@ footer {
     padding-bottom: calc(1em + 1vw);
 }
 
+/* Quiz CSS */
+.game-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-timer {
+    display: flex;
+    justify-content: space-around;
+}
 /*media queries start*/
 /*small laptops*/
 @media screen and (min-width: 769px) {
