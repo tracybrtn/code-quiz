@@ -143,6 +143,10 @@ ul {
     box-shadow: 0px 0px 2px 2px var(--primary-color);
 }
 
+#quiz-page {
+    display: none;
+}
+
 /*media queries start*/
 /*small laptops*/
 @media screen and (min-width: 769px) {
