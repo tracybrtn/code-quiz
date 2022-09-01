@@ -118,11 +118,8 @@ footer {
 #question {
     font-size: calc(1.5em + 1vw);
 }
-ul {
-    list-style: none;
-}
 
-.option-list {
+.option-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -170,6 +167,7 @@ ul {
         border: 2px solid var(--quaternary-color);
         color: var(--primary-color);
         background-image: linear-gradient(180deg, var(--tertiary-color), var(--quinary-color));
+        cursor: pointer;
     }
 
     .btn-glow:hover {
@@ -182,6 +180,7 @@ ul {
         border: 2px solid var(--quaternary-color);
         color: var(--primary-color);
         background-image: linear-gradient(180deg, var(--tertiary-color), var(--quinary-color));
+        cursor: pointer;
     }
 
     .option-glow:hover {
