@@ -98,7 +98,7 @@ p {
     box-shadow: 0px 0px 7px 7px var(--primary-color);
 }
 
-footer {
+.body-footer {
     text-align: center;
     padding-bottom: calc(1em + 1vw);
 }

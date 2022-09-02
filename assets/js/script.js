@@ -1,5 +1,6 @@
 //Create the objects
 var startBtn = document.getElementById("start-btn");
+var nextBtn = document.getElementById("next-btn");
 var landingPage = document.getElementById("landing-page");
 var quizPage = document.getElementById("quiz-page");
 var questionEl = document.getElementById("question");
@@ -9,10 +10,11 @@ var option2El = document.getElementById("option-2");
 var option3El = document.getElementById("option-3");
 var option4El = document.getElementById("option-4");
 //pick a choice
+//pick choices
+var option = document.querySelector("option");
 
 //setting this as a variable
 let questionNumber
-let acceptingAnswers = true
 
 //Questions array
 //future code: put choices in array
@@ -50,30 +52,9 @@ var questions = [
     },
 ];
 
-
-
-//When the start button is pressed, the landing page is hidden and the #quiz-page is shown
-function startQuiz () {
-    landingPage.style.display = "none";
-    quizPage.style.display = "flex";
-    // Test will start from the first question
-    questionNumber = 6;
-    displayQuestions(questionNumber);
-    // When an option is activated then questionnumber +1
-    option1El.addEventListener("click", questionNumber++);
-    
-//when question number = 6 game is over
-}
-
-questionNumber = function(){
-    for (i = 0; i < questions.length; i++);
-}
-
 //displays questions and choices
 function displayQuestions(n) {
     //change text of selected elements to display the questions
-   // questionEl.innerText = questions[n].question
-   // For loops to loop through all questions
     var userQuestion = questions[n].question;
     var userOption1 = questions[n].options[0];
     var userOption2 = questions[n].options[1];
@@ -85,6 +66,47 @@ function displayQuestions(n) {
     option3El.innerText = userOption3;
     option4El.innerText = userOption4;
 }
+
+
+//When the start button is pressed, the landing page is hidden and the #quiz-page is shown
+function startQuiz () {
+    landingPage.style.display = "none";
+    quizPage.style.display = "flex";
+    nextBtn.style.display = "none";
+    // Test will start from the first question
+    questionNumber = 0;
+    displayQuestions(questionNumber);
+    // When an option is activated then question number +1
+    option1El.addEventListener("click", function (){
+        console.log("question 1");
+        nextBtn.style.display = "flex";
+    });
+    option2El.addEventListener("click",  function (){
+        console.log("question 2");
+        nextBtn.style.display = "flex";
+    });
+    option3El.addEventListener("click",  function (){
+        console.log("question 3");
+        nextBtn.style.display = "flex";
+    });
+    option4El.addEventListener("click",  function (){
+        console.log("question 4");
+        nextBtn.style.display = "flex";
+    });
+    option.addEventListener("click",  function (){
+        console.log("option");
+        nextBtn.style.display = "flex";
+    });
+
+    // When next button is clicked, new question is shown
+    nextBtn.addEventListener("click", function (){
+    });
+//when question number = 6 game is over
+}
+
+
+
+
 
 //display next question
 
