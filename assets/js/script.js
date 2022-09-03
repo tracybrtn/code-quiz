@@ -1,20 +1,24 @@
-//Create the objects
+//CREATE THE OBJECTS
+//buttons
 var startBtn = document.getElementById("start-btn");
 var nextBtn = document.getElementById("next-btn");
+//pages
 var landingPage = document.getElementById("landing-page");
 var quizPage = document.getElementById("quiz-page");
+var gameOverPage = document.getElementById("game-over-page");
+//timer
+var countdownEl = document.getElementById("timer")
+//question
 var questionEl = document.getElementById("question");
-//selecting all options with an array targeting a class
+//options
 var option1El = document.getElementById("option-1");
 var option2El = document.getElementById("option-2");
 var option3El = document.getElementById("option-3");
 var option4El = document.getElementById("option-4");
-//pick a choice
-//pick choices
-var option = document.querySelector("option");
+
 
 //setting this as a variable
-let questionNumber
+let questionNumber = "";
 
 //Questions array
 //future code: put choices in array
@@ -67,13 +71,13 @@ function displayQuestions(n) {
     option4El.innerText = userOption4;
 }
 
-
 //When the start button is pressed, the landing page is hidden and the #quiz-page is shown
 function startQuiz () {
     landingPage.style.display = "none";
     quizPage.style.display = "flex";
     nextBtn.style.display = "none";
     // Test will start from the first question
+    secondsLeft = 105;
     questionNumber = 0;
     displayQuestions(questionNumber);
     // When an option is activated then question number +1
@@ -101,14 +105,37 @@ function startQuiz () {
     // When next button is clicked, new question is shown
     nextBtn.addEventListener("click", function (){
     });
-//when question number = 6 game is over
 }
 
+// TIMER STARTS
+var startTimer = setInterval(function() {
+    secondsLeft--;
+    countdownEl.innerText = secondsLeft
+
+    // if time is below or equal to cero then stop countdown and game is over
+    if (secondsLeft <= 0){
+        clearInterval(startTimer)
+        gameOver();
+    // if questions are done then stop interval and game is over
+    } else if (questionNumber >= questions.length +1) {
+        clearInterval(startTimer);
+        gameOver();
+    }
+}, 1000);
+
+function gameOver () {
+    landingPage.style.display = "none";
+    quizPage.style.display = "none";
+}
+
+//check if question is right or wrong (questions===answers)
+//display next question question index +++ (if index is less than question lenght then nextquestion is called. if not the game is over)
+
+// game is over when all questions are answered or timer equals cero
+//new screen is shown. New screen shows total score
 
 
-
-
-//display next question
+// store scores into local storage
 
 
 
