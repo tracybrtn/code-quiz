@@ -15,10 +15,13 @@ var option1El = document.getElementById("option-1");
 var option2El = document.getElementById("option-2");
 var option3El = document.getElementById("option-3");
 var option4El = document.getElementById("option-4");
+//score
+var scoreEl = document.getElementById("score");
 
 
 //setting this as a variable
-let questionNumber = "";
+let questionNumber = 0;
+let score = 0;
 
 //Questions array
 //future code: put choices in array
@@ -57,13 +60,13 @@ var questions = [
 ];
 
 //displays questions and choices
-function displayQuestions(n) {
+function displayQuestions(questionNumber) {
     //change text of selected elements to display the questions
-    var userQuestion = questions[n].question;
-    var userOption1 = questions[n].options[0];
-    var userOption2 = questions[n].options[1];
-    var userOption3 = questions[n].options[2];
-    var userOption4 = questions[n].options[3];
+    var userQuestion = questions[questionNumber].question;
+    var userOption1 = questions[questionNumber].options[0];
+    var userOption2 = questions[questionNumber].options[1];
+    var userOption3 = questions[questionNumber].options[2];
+    var userOption4 = questions[questionNumber].options[3];
     questionEl.innerText = userQuestion;
     option1El.innerText = userOption1;
     option2El.innerText = userOption2;
@@ -75,7 +78,7 @@ function displayQuestions(n) {
 function startQuiz () {
     landingPage.style.display = "none";
     quizPage.style.display = "flex";
-    nextBtn.style.display = "none";
+    gameOverPage.style.display = "none";
     // Test will start from the first question
     secondsLeft = 75;
     questionNumber = 0;
@@ -93,7 +96,7 @@ var startTimer = setInterval(function() {
         clearInterval(startTimer)
         gameOver();
     // if questions are done then stop interval and game is over
-    } else if (questionNumber >= questions.length +1) {
+    } else if (questionNumber >= questions.length) {
         clearInterval(startTimer);
         gameOver();
     }
@@ -104,15 +107,26 @@ function checkAnswer(answer) {
     if (questions[questionNumber].answer === questions[questionNumber].options[answer]) {
         // correct answer
         console.log("right");
+        //add points
+        score = score + 10;
+
     } else {
         // if it is not right it is wrong
         console.log("wrong");
+        //substract time
+        secondsLeft = secondsLeft - 10;
     }
+    questionNumber++;
+    console.log(questionNumber);
+    displayQuestions(questionNumber);
+    console.log(score);
 };
 
 function gameOver () {
     landingPage.style.display = "none";
     quizPage.style.display = "none";
+    gameOverPage.style.display = "flex";
+    scoreEl.innerText = score;
 };
 
 
@@ -121,7 +135,7 @@ function gameOver () {
 
 // store scores into local storage
 
-// Choices
+// Choices/options
 function choose1() {
     checkAnswer(0);
     console.log("checked answer 1");

@@ -40,6 +40,7 @@
                     <div id="timer"></div>
                 </div>
             </header>
+            <!--end of quiz header-->
             <!--quiz body-->
             <section id="game-main">
                 <h2 id="question"></h2>
@@ -50,13 +51,22 @@
                     <button class="option option-glow" data-number="4" id="option-4"></button>
                 </div>
             </section>
-            <footer id="quiz-footer">
-                <button class="btn-box btn-glow" id="next-btn">Next</button>
-            </footer>
             <!--end of quiz body-->
-            <!--game over section-->
         </section>
         <!--end of quiz page-->
+
+        <!--game over section-->
+        <section id="game-over-page" class="container flex-box box-glow">
+            <h1>Game over!</h1>
+            <div>
+                <h2> Your final score is</h2>
+                <div id="score"></div>
+            </div>
+            <div class="btns">
+                <a class="btn-box btn-glow" href="/highscores.html">Check<br>High Scores</a>
+                <p class="btn-box btn-glow" id="restart-btn">Play again</p>
+            </div>
+        </section>
     </main>
 
     <footer class="body-footer">
