@@ -26,7 +26,7 @@ var questions = [
     {
         question: "1: Inside which HTML element do we put the JavaScript?",
         options: ["a. <script>", "b. <scripting>", "c. <js>", "d. <javascript>"],
-        answer: "b. <scripting>"
+        answer: "a. <script>"
     },
     {
         question: "2. Where is the correct place to insert a JavaScript?",
@@ -77,34 +77,10 @@ function startQuiz () {
     quizPage.style.display = "flex";
     nextBtn.style.display = "none";
     // Test will start from the first question
-    secondsLeft = 105;
+    secondsLeft = 75;
     questionNumber = 0;
     displayQuestions(questionNumber);
     // When an option is activated then question number +1
-    option1El.addEventListener("click", function (){
-        console.log("question 1");
-        nextBtn.style.display = "flex";
-    });
-    option2El.addEventListener("click",  function (){
-        console.log("question 2");
-        nextBtn.style.display = "flex";
-    });
-    option3El.addEventListener("click",  function (){
-        console.log("question 3");
-        nextBtn.style.display = "flex";
-    });
-    option4El.addEventListener("click",  function (){
-        console.log("question 4");
-        nextBtn.style.display = "flex";
-    });
-    option.addEventListener("click",  function (){
-        console.log("option");
-        nextBtn.style.display = "flex";
-    });
-
-    // When next button is clicked, new question is shown
-    nextBtn.addEventListener("click", function (){
-    });
 }
 
 // TIMER STARTS
@@ -123,21 +99,55 @@ var startTimer = setInterval(function() {
     }
 }, 1000);
 
+function checkAnswer(answer) {
+    //check if answer is right or wrong by checking if the answer and the choice are the same
+    if (questions[questionNumber].answer === questions[questionNumber].options[answer]) {
+        // correct answer
+        console.log("right");
+    } else {
+        // if it is not right it is wrong
+        console.log("wrong");
+    }
+};
+
 function gameOver () {
     landingPage.style.display = "none";
     quizPage.style.display = "none";
-}
+};
 
-//check if question is right or wrong (questions===answers)
-//display next question question index +++ (if index is less than question lenght then nextquestion is called. if not the game is over)
 
-// game is over when all questions are answered or timer equals cero
 //new screen is shown. New screen shows total score
 
 
 // store scores into local storage
 
+// Choices
+function choose1() {
+    checkAnswer(0);
+    console.log("checked answer 1");
+}
 
+function choose2() {
+    checkAnswer(1);
+    console.log("checked answer 2");
+}
 
-//add event listener
+function choose3() {
+    checkAnswer(2);
+    console.log("checked answer 3");
+}
+
+function choose4() {
+    checkAnswer(3);
+    console.log("checked answer 4");
+}
+
+//add event listeners
+//Start Quiz
 startBtn.addEventListener("click", startQuiz);
+
+//Choose questions and check answers
+option1El.addEventListener("click", choose1);
+option2El.addEventListener("click", choose2);
+option3El.addEventListener("click", choose3);
+option4El.addEventListener("click", choose4);
