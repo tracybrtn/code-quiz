@@ -104,6 +104,10 @@ p {
 }
 /* Game pages */
 
+#landing-page {
+    display: flex;
+}
+
 #quiz-page {
     display: none;
 }

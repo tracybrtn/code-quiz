@@ -129,9 +129,7 @@ function gameOver () {
     scoreEl.innerText = score;
 };
 
-
-//new screen is shown. New screen shows total score
-
+//display right or wrong message
 
 // store scores into local storage
 
