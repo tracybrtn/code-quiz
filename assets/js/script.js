@@ -1,7 +1,6 @@
 //CREATE THE OBJECTS
 //buttons
 var startBtn = document.getElementById("start-btn");
-var nextBtn = document.getElementById("next-btn");
 //pages
 var landingPage = document.getElementById("landing-page");
 var quizPage = document.getElementById("quiz-page");
@@ -15,6 +14,9 @@ var option1El = document.getElementById("option-1");
 var option2El = document.getElementById("option-2");
 var option3El = document.getElementById("option-3");
 var option4El = document.getElementById("option-4");
+//answers
+var answerContainerEl = document.getElementById("answer-container");
+var showAnswerEl = document.getElementById("show-answer");
 //score
 var scoreEl = document.getElementById("score");
 
@@ -107,19 +109,23 @@ function checkAnswer(answer) {
     if (questions[questionNumber].answer === questions[questionNumber].options[answer]) {
         // correct answer
         console.log("right");
+        showAnswerEl.innerText = "Correct!";
         //add points
         score = score + 10;
 
     } else {
         // if it is not right it is wrong
         console.log("wrong");
+        showAnswerEl.innerText = "Wrong! The right answer is " + questions[questionNumber].answer + ".";
         //substract time
         secondsLeft = secondsLeft - 10;
     }
     questionNumber++;
     console.log(questionNumber);
+    answerContainerEl.style.display = "block";
     displayQuestions(questionNumber);
     console.log(score);
+    
 };
 
 function gameOver () {
@@ -128,8 +134,6 @@ function gameOver () {
     gameOverPage.style.display = "flex";
     scoreEl.innerText = score;
 };
-
-//display right or wrong message
 
 // store scores into local storage
 
