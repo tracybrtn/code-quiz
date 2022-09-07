@@ -1,31 +1,37 @@
 //CREATE THE OBJECTS
-//buttons
-var startBtn = document.getElementById("start-btn");
 //pages
 var landingPage = document.getElementById("landing-page");
 var quizPage = document.getElementById("quiz-page");
 var gameOverPage = document.getElementById("game-over-page");
-//timer
+var highScoresPage = document.getElementById("high-scores-page");
+//LANDING PAGE
+    //start and high scores buttons
+var startBtn = document.getElementById("start-btn");
+var highScoresBtn = document.getElementById("high-scores-btn");
+//QUIZ PAGE
+    //timer
 var countdownEl = document.getElementById("timer")
-//question
+    //question
 var questionEl = document.getElementById("question");
-//options
+    //options
 var option1El = document.getElementById("option-1");
 var option2El = document.getElementById("option-2");
 var option3El = document.getElementById("option-3");
 var option4El = document.getElementById("option-4");
-//answers
+    //answers
 var answerContainerEl = document.getElementById("answer-container");
 var showAnswerEl = document.getElementById("show-answer");
-//score
+//GAME OVER PAGE
+    //score
 var scoreEl = document.getElementById("score");
+var initialsEl = document.getElementById("initials-score");
+var submitEl = document.getElementById("score-submit");
 
-//setting this as a variable
+//setting variables for the beginning of the game
 let questionNumber = 0;
 let score = 0;
 
 //Questions array
-//future code: put choices in array
 var questions = [
     {
         question: "1: Inside which HTML element do we put the JavaScript?",
@@ -75,11 +81,13 @@ function displayQuestions(questionNumber) {
     option4El.innerText = userOption4;
 }
 
-//When the start button is pressed, the landing page and game over page are hidden and the #quiz-page is shown
+//STARTS GAME
+//When the start button is pressed, the landing page game over and high scores page are hidden and the #quiz-page is shown
 function startQuiz () {
     landingPage.style.display = "none";
     quizPage.style.display = "flex";
     gameOverPage.style.display = "none";
+    highScoresPage.style.display = "none";
     // Test will start at 75 seconds
     secondsLeft = 75;
     // TIMER STARTS
@@ -93,6 +101,7 @@ function startQuiz () {
         // if questions are done then stop interval and game is over
         } else if (questionNumber >= questions.length) {
             clearInterval(startTimer);
+            console.log("Final score is " + score);
             gameOver();
         }
     }, 1000);
@@ -101,7 +110,7 @@ function startQuiz () {
     displayQuestions(questionNumber);
 }
 
-
+//Check if answer is correct and show next question
 function checkAnswer(answer) {
     //check if answer is right or wrong by checking if the answer and the choice are the same
     if (questions[questionNumber].answer === questions[questionNumber].options[answer]) {
@@ -112,7 +121,6 @@ function checkAnswer(answer) {
 
     } else {
         // if it is not right it is wrong
-        console.log("wrong");
         showAnswerEl.innerText = "Wrong! The right answer is " + questions[questionNumber].answer + ".";
         //substract time
         secondsLeft = secondsLeft - 10;
@@ -121,19 +129,40 @@ function checkAnswer(answer) {
     answerContainerEl.style.display = "block";
     displayQuestions(questionNumber);
     console.log(score);
-    
 };
 
+//quiz is over
 function gameOver () {
     landingPage.style.display = "none";
     quizPage.style.display = "none";
+    highScoresPage.style.display = "none";
     gameOverPage.style.display = "flex";
     scoreEl.innerText = score;
+    //Storing scores
+    highScore = localStorage.getItem("highScore");
+        if(highScore !== null){
+            if (score > highScore) {
+                localStorage.setItem("highScore", score);
+            }
+        } else{
+            localStorage.setItem("highScore", score);
+        }
+        console.log(highScore);
+        console.log(score);
 }
 
+
 function storeScore () {
-    
+    preventDefault();
+    console.log(initialsEl);
 };
+
+function showHighScores () {
+    landingPage.style.display = "none";
+    quizPage.style.display = "none";
+    highScoresPage.style.display = "flex";
+    gameOverPage.style.display = "none";
+}
 
 // Choices/options
 function choose1() {
@@ -156,8 +185,15 @@ function choose4() {
 //Start Quiz
 startBtn.addEventListener("click", startQuiz);
 
+//Check High Scores
+highScoresBtn.addEventListener("click", showHighScores);
+
 //Choose questions and check answers
 option1El.addEventListener("click", choose1);
 option2El.addEventListener("click", choose2);
 option3El.addEventListener("click", choose3);
 option4El.addEventListener("click", choose4);
+
+//submit high score
+submitEl.addEventListener("click", showHighScores);
+//takes you back to the start because it is a button i think

@@ -104,9 +104,8 @@ p {
 }
 
 /* Game pages */
-
 #landing-page {
-    display: none;
+    display: flex;
 }
 
 #quiz-page {
@@ -114,7 +113,11 @@ p {
 }
 
 #game-over-page {
-    display: flex;
+    display: none;
+}
+
+#high-scores-page {
+    display: none;
 }
 
 
