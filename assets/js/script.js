@@ -20,7 +20,6 @@ var showAnswerEl = document.getElementById("show-answer");
 //score
 var scoreEl = document.getElementById("score");
 
-
 //setting this as a variable
 let questionNumber = 0;
 let score = 0;
@@ -76,39 +75,37 @@ function displayQuestions(questionNumber) {
     option4El.innerText = userOption4;
 }
 
-//When the start button is pressed, the landing page is hidden and the #quiz-page is shown
+//When the start button is pressed, the landing page and game over page are hidden and the #quiz-page is shown
 function startQuiz () {
     landingPage.style.display = "none";
     quizPage.style.display = "flex";
     gameOverPage.style.display = "none";
-    // Test will start from the first question
+    // Test will start at 75 seconds
     secondsLeft = 75;
+    // TIMER STARTS
+    var startTimer = setInterval(function() {
+        secondsLeft--;
+        countdownEl.innerText = secondsLeft
+        // if time is below or equal to cero then stop countdown and game is over
+        if (secondsLeft <= 0){
+            clearInterval(startTimer)
+            gameOver();
+        // if questions are done then stop interval and game is over
+        } else if (questionNumber >= questions.length) {
+            clearInterval(startTimer);
+            gameOver();
+        }
+    }, 1000);
+    //test will start at question number 0
     questionNumber = 0;
     displayQuestions(questionNumber);
-    // When an option is activated then question number +1
 }
 
-// TIMER STARTS
-var startTimer = setInterval(function() {
-    secondsLeft--;
-    countdownEl.innerText = secondsLeft
-
-    // if time is below or equal to cero then stop countdown and game is over
-    if (secondsLeft <= 0){
-        clearInterval(startTimer)
-        gameOver();
-    // if questions are done then stop interval and game is over
-    } else if (questionNumber >= questions.length) {
-        clearInterval(startTimer);
-        gameOver();
-    }
-}, 1000);
 
 function checkAnswer(answer) {
     //check if answer is right or wrong by checking if the answer and the choice are the same
     if (questions[questionNumber].answer === questions[questionNumber].options[answer]) {
         // correct answer
-        console.log("right");
         showAnswerEl.innerText = "Correct!";
         //add points
         score = score + 10;
@@ -121,7 +118,6 @@ function checkAnswer(answer) {
         secondsLeft = secondsLeft - 10;
     }
     questionNumber++;
-    console.log(questionNumber);
     answerContainerEl.style.display = "block";
     displayQuestions(questionNumber);
     console.log(score);
@@ -133,29 +129,27 @@ function gameOver () {
     quizPage.style.display = "none";
     gameOverPage.style.display = "flex";
     scoreEl.innerText = score;
-};
+}
 
-// store scores into local storage
+function storeScore () {
+    
+};
 
 // Choices/options
 function choose1() {
     checkAnswer(0);
-    console.log("checked answer 1");
 }
 
 function choose2() {
     checkAnswer(1);
-    console.log("checked answer 2");
 }
 
 function choose3() {
     checkAnswer(2);
-    console.log("checked answer 3");
 }
 
 function choose4() {
     checkAnswer(3);
-    console.log("checked answer 4");
 }
 
 //add event listeners
