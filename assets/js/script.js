@@ -24,12 +24,17 @@ var showAnswerEl = document.getElementById("show-answer");
 //GAME OVER PAGE
     //score
 var scoreEl = document.getElementById("score");
+var submitEl = document.getElementById("initials-submit");
 var initialsEl = document.getElementById("initials-score");
-var submitEl = document.getElementById("score-submit");
+    //setting high scores to save scores in local storage
+
+
 
 //setting variables for the beginning of the game
 let questionNumber = 0;
 let score = 0;
+
+
 
 //Questions array
 var questions = [
@@ -138,30 +143,22 @@ function gameOver () {
     highScoresPage.style.display = "none";
     gameOverPage.style.display = "flex";
     scoreEl.innerText = score;
-    //Storing scores
-    highScore = localStorage.getItem("highScore");
-        if(highScore !== null){
-            if (score > highScore) {
-                localStorage.setItem("highScore", score);
-            }
-        } else{
-            localStorage.setItem("highScore", score);
-        }
-        console.log(highScore);
-        console.log(score);
 }
 
+function storeScore () {   
+    showHighScores();
+}
 
-function storeScore () {
-    preventDefault();
-    console.log(initialsEl);
-};
 
 function showHighScores () {
     landingPage.style.display = "none";
     quizPage.style.display = "none";
     highScoresPage.style.display = "flex";
     gameOverPage.style.display = "none";
+
+   
+    localStorage.setItem("score", score);
+    localStorage.setItem("initials", initialsEl.textContent);
 }
 
 // Choices/options
@@ -182,18 +179,14 @@ function choose4() {
 }
 
 //add event listeners
-//Start Quiz
+    //Start Quiz
 startBtn.addEventListener("click", startQuiz);
-
-//Check High Scores
+    //Check High Scores
 highScoresBtn.addEventListener("click", showHighScores);
-
-//Choose questions and check answers
+    //Choose options and check answers
 option1El.addEventListener("click", choose1);
 option2El.addEventListener("click", choose2);
 option3El.addEventListener("click", choose3);
 option4El.addEventListener("click", choose4);
-
-//submit high score
-submitEl.addEventListener("click", showHighScores);
-//takes you back to the start because it is a button i think
+    //submit high score
+submitEl.addEventListener("click", storeScore);
