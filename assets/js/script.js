@@ -97,6 +97,7 @@ function startQuiz () {
     quizPage.style.display = "flex";
     gameOverPage.style.display = "none";
     highScoresPage.style.display = "none";
+    answerContainerEl.style.display = "none";
     // Test will start at 75 seconds
     secondsLeft = 75;
     // TIMER STARTS

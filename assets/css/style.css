@@ -25,6 +25,10 @@
     color: var(--secondary-color);
 }
 
+body, html {
+    height:100%;
+}
+
 span {
     color: var(--quinary-color);
     font-weight: 900;
@@ -39,12 +43,12 @@ button {
     justify-content: center;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+    overflow: hidden;
 }
 
 p {
-    font-size: calc(1.2em + 1vw);
-    line-height: calc(1em + 1vw);
+    font-size: calc(1em + 1vw);
+    line-height: calc(.8em + 1vw);
 }
 
 .box-glow {
@@ -55,16 +59,17 @@ p {
 }
 
 .container {
-    width: 85%;
-    height: 75%;
+    margin-top: 50px;
+    max-width: 90%;
+    max-height: 75%;
     background-color: var(--dark-color);
     border-radius: 10%;
     border: solid var(--primary-color);
-    padding: calc(2em + 1vw);
+    padding: calc(1.5em + .5vw);
 }
 
 .container h1 {
-    font-size: calc(5em + 1vw);
+    font-size: calc(4.5em + .5vw);
     color: var(--primary-color);
     text-shadow: calc(.1em + .1vw) calc(.1em + .1vw) var(--quaternary-color);
 }
@@ -72,7 +77,7 @@ p {
 .flex-box {
     display: flex;
     flex-direction: column;
-    row-gap: calc(1em + 1vw);
+    row-gap: calc(1em + .5vw);
     text-align: center;
 }
 
@@ -80,7 +85,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    font-size: calc(1.5em + 1vw);
+    font-size: calc(1.2em + .5vw);
 }
 
 .btn-box {
@@ -100,7 +105,9 @@ p {
 
 .body-footer {
     text-align: center;
-    padding-bottom: calc(1em + 1vw);
+    padding-bottom: calc(1em + .5vw);
+    color: var(--neutral-color);
+    margin-top: 10px;
 }
 
 /* Game pages */
@@ -134,7 +141,12 @@ p {
 }
 
 #question {
-    font-size: calc(1.5em + 1vw);
+    font-size: calc(1.2em + .5vw);
+}
+
+#timer {
+    font-size: calc(1em + .5vw);
+    color: var(--neutral-color);
 }
 
 .option-container {
@@ -142,7 +154,7 @@ p {
     flex-direction: column;
     flex-wrap: wrap;
     align-items: stretch;
-    font-size: calc(1em + 1vw);
+    font-size: calc(1em + .5vw);
 }
 
 .option {
@@ -153,8 +165,8 @@ p {
     border-radius: 10%;
     color: var(--neutral-color);
     background-image: linear-gradient(180deg, var(--primary-color), var(--tertiary-color));
-    font-size: calc(1.2em + 1vw);
-    line-height: calc(1em + 1vw);
+    font-size: calc(1em + .5vw);
+    line-height: calc(1em + .5vw);
 }
 
 .option-glow {
@@ -170,7 +182,7 @@ p {
 
 /*Game Over page*/
 #score {
-    font-size: calc(1.8em + 1vw);
+    font-size: calc(1.8em + .5vw);
     color: var(--neutral-color);
 }
 
@@ -184,7 +196,7 @@ input {
     font-family: visitor;
     margin: 10px;
     border-radius: 10px;
-    height: calc(2.2em + 1vw);
+    height: calc(2em + .5vw);
     text-align: center;
     color: var(--primary-color);
     background-color: var(--neutral-color);
@@ -215,7 +227,7 @@ input:focus {
         color: var(--neutral-color);
     }
     .container {
-        width: 75%;
+        max-width: 80%;
     }
     .container h1:hover{
         color: var(--quaternary-color);
