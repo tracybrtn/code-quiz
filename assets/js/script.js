@@ -145,7 +145,33 @@ function gameOver () {
     scoreEl.innerText = score;
 }
 
-function storeScore () {   
+function storeScore () {
+    //get item high scores
+    var savedHighScores = localStorage.getItem('high scores');
+    var scoresArr;
+    console.log(savedHighScores);
+
+    //if there are not any saved high scores, then the array is an empty array
+    if (savedHighScores === null) {
+        scoresArr = []
+    // if there are any high scores, then they show up in the function
+    } else {
+        scoresArr = JSON.parse(savedHighScores)
+    }
+    // store both name and score of users
+    let userInfo = {
+        name: initialsEl.value,
+        score: score
+    }
+    console.log(userInfo);
+    scoresArr.push(userInfo);
+    console.log(scoresArr);
+
+    //stringify array to store in local
+    var scoresArrString = JSON.stringify(scoresArr);
+    //store array into high score item
+    window.localStorage.setItem("high scores", scoresArrString);
+
     showHighScores();
 }
 
@@ -155,10 +181,6 @@ function showHighScores () {
     quizPage.style.display = "none";
     highScoresPage.style.display = "flex";
     gameOverPage.style.display = "none";
-
-   
-    localStorage.setItem("score", score);
-    localStorage.setItem("initials", initialsEl.textContent);
 }
 
 // Choices/options
