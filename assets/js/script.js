@@ -100,6 +100,8 @@ function startQuiz () {
     answerContainerEl.style.display = "none";
     // Test will start at 75 seconds
     secondsLeft = 75;
+    //score is 0
+    score = 0;
     // TIMER STARTS
     var startTimer = setInterval(function() {
         secondsLeft--;
