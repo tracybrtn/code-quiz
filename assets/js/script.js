@@ -26,7 +26,7 @@ var showAnswerEl = document.getElementById("show-answer");
 var scoreEl = document.getElementById("score");
 var submitEl = document.getElementById("initials-submit");
 var initialsEl = document.getElementById("initials-score");
-    //setting high scores to save scores in local storage
+var highScoresEl = document.getElementById("high-scores-list");
 
 
 
@@ -172,6 +172,7 @@ function storeScore () {
     //store array into high score item
     window.localStorage.setItem("high scores", scoresArrString);
 
+    //show high score screen
     showHighScores();
 }
 
@@ -181,6 +182,23 @@ function showHighScores () {
     quizPage.style.display = "none";
     highScoresPage.style.display = "flex";
     gameOverPage.style.display = "none";
+
+    //display high scores
+    var getHighScores = localStorage.getItem("high scores");
+    //check if there are any in local storage
+    if (getHighScores === null) {
+        return;
+    }
+    //transform strings into objects
+    var scoresArrParse = JSON.parse(getHighScores);
+    console.log(scoresArrParse);
+    //append items
+    for (i = 0; i < scoresArrParse.length; i++) {
+        var showScores = document.createElement("p");
+        showScores.textContent = scoresArrParse[i].name + ": " + scoresArrParse[i].score;
+        highScoresEl.appendChild(showScores);
+        console.log(showScores);
+    }
 }
 
 // Choices/options
@@ -211,4 +229,10 @@ option2El.addEventListener("click", choose2);
 option3El.addEventListener("click", choose3);
 option4El.addEventListener("click", choose4);
     //submit high score
-submitEl.addEventListener("click", storeScore);
+submitEl.addEventListener("click", function() {
+    if (initialsEl.value === "") {
+        alert("Please enter your initials");
+        return;
+    }
+    storeScore();
+})
