@@ -1,6 +1,7 @@
 # code-quiz
 A timed coding quiz with multiple-choice questions inspired by coding assessments
-(screenshot)
+![Final version of website](https://github.com/tracybrtn/code-quiz/blob/3e8c0af520e3cb58407a9c3fd18e5aa33395b572/assets/images/live-website.png)
+
 ## Purpose
 - AS A coding boot camp student
   - I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
@@ -18,8 +19,6 @@ A timed coding quiz with multiple-choice questions inspired by coding assessment
     - THEN the game is over
   - WHEN the game is over
     - THEN I can save my initials and score
-  
-### Work flow and branches
 
 ## Built With
 - HTML
@@ -27,6 +26,7 @@ A timed coding quiz with multiple-choice questions inspired by coding assessment
 - JavaScript
 
 ## Website
-(link)
+https://tracybrtn.github.io/code-quiz/
+
 ## Contribution
-By @tracybrtn
+Made by @tracybrtn
