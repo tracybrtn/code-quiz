@@ -27,6 +27,10 @@ var scoreEl = document.getElementById("score");
 var submitEl = document.getElementById("initials-submit");
 var initialsEl = document.getElementById("initials-score");
 var highScoresEl = document.getElementById("high-scores-list");
+var replayBtn = document.getElementById("replay-btn");
+
+//HIGH SCORES PAGE
+var playAgainBtn = document.getElementById("play-again-btn");
 
 
 
@@ -221,6 +225,8 @@ function choose4() {
 //add event listeners
     //Start Quiz
 startBtn.addEventListener("click", startQuiz);
+replayBtn.addEventListener("click", startQuiz);
+playAgainBtn.addEventListener("click", startQuiz);
     //Check High Scores
 highScoresBtn.addEventListener("click", showHighScores);
     //Choose options and check answers
