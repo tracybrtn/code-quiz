@@ -47,7 +47,7 @@ button {
 }
 
 p {
-    font-size: calc(1em + 1vw);
+    font-size: calc(1.2em + 1vw);
     line-height: calc(.8em + 1vw);
 }
 
@@ -61,7 +61,7 @@ p {
 .container {
     margin-top: 50px;
     max-width: 90%;
-    max-height: 75%;
+    min-height: 75vh;
     background-color: var(--dark-color);
     border-radius: 10%;
     border: solid var(--primary-color);
@@ -69,7 +69,7 @@ p {
 }
 
 .container h1 {
-    font-size: calc(4.5em + .5vw);
+    font-size: calc(5em + 2vw);
     color: var(--primary-color);
     text-shadow: calc(.1em + .1vw) calc(.1em + .1vw) var(--quaternary-color);
 }
@@ -79,6 +79,7 @@ p {
     flex-direction: column;
     row-gap: calc(1em + .5vw);
     text-align: center;
+    justify-content: space-evenly;
 }
 
 .btns {
